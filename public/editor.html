@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문서 편집</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="editor-body">
+    <header class="editor-topbar">
+      <a href="/" class="editor-back">목록으로</a>
+      <div class="editor-meta">
+        <strong id="doc-title">문서를 불러오는 중...</strong>
+        <p id="doc-subtitle"></p>
+      </div>
+      <button id="toggle-chrome" class="editor-toggle" type="button">헤더 숨기기</button>
+    </header>
+
+    <div id="editor-holder"></div>
+    <p id="editor-status" class="editor-toast"></p>
+
+    <script src="/editor.js" defer></script>
+  </body>
+</html>

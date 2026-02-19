@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: open-office-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: "3000"
+      PUBLIC_BASE_URL: "http://localhost:3000"
+      INTERNAL_BASE_URL: "http://app:3000"
+      DOCUMENT_SERVER_INTERNAL_URL: "http://documentserver"
+      DOCUMENT_SERVER_PROXY_PATH: "/ds"
+      JWT_ENABLED: "true"
+      JWT_SECRET: "${JWT_SECRET}"
+      STORAGE_DIR: "/app/data/files"
+      MAX_UPLOAD_SIZE_MB: "200"
+    volumes:
+      - ./data/files:/app/data/files
+    depends_on:
+      - documentserver
+
+  documentserver:
+    image: onlyoffice/documentserver:8.3.3
+    container_name: open-office-docserver
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      JWT_ENABLED: "true"
+      JWT_SECRET: "${JWT_SECRET}"
+      JWT_HEADER: "Authorization"
+      JWT_IN_BODY: "true"
+    volumes:
+      - documentserver_data:/var/www/onlyoffice/Data
+      - documentserver_logs:/var/log/onlyoffice
+
+volumes:
+  documentserver_data:
+  documentserver_logs:

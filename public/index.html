@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Office Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="home-body">
+    <main class="home-shell">
+      <header class="home-topbar card-panel">
+        <div>
+          <p class="home-kicker">Open-source-first editor</p>
+          <h1 class="brand-title">Open Office Web</h1>
+        </div>
+        <p class="oss-chip">UI Kit: Tabler (MIT)</p>
+      </header>
+
+      <section class="hero-grid">
+        <article class="card-panel hero-main">
+          <h2>웹에서 바로 문서 편집</h2>
+          <p>
+            ONLYOFFICE Community + Express 조합으로 HWP/HWPX/PDF/Office 파일을 브라우저에서 열고,
+            저장 콜백으로 서버 파일까지 동기화합니다.
+          </p>
+          <p class="hero-sub">업로드 후 바로 `편집 열기`를 누르면 웹 에디터가 실행됩니다.</p>
+        </article>
+
+        <aside class="card-panel hero-side">
+          <h3>오픈소스 스택</h3>
+          <ul class="stack-list">
+            <li>ONLYOFFICE Document Server (AGPL)</li>
+            <li>Node.js + Express + Multer (MIT)</li>
+            <li>Tabler UI style system (MIT)</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="card-panel upload-card">
+        <div class="section-head">
+          <h2>파일 업로드</h2>
+          <p class="section-desc">지원 확장자: hwp, hwpx, pdf, docx/xlsx/pptx, odt/ods/odp, txt/rtf/csv ...</p>
+        </div>
+        <form id="upload-form" class="upload-form">
+          <input id="file-input" name="file" type="file" required />
+          <button type="submit">업로드</button>
+        </form>
+        <p id="upload-status" class="status"></p>
+      </section>
+
+      <section class="card-panel list-card">
+        <div class="list-header">
+          <div>
+            <h2>문서 목록</h2>
+            <p class="section-desc">최근 수정 순으로 정렬됩니다.</p>
+          </div>
+          <button id="refresh-btn" class="ghost">새로고침</button>
+        </div>
+        <div class="table-wrap">
+          <table class="files-table">
+            <thead>
+              <tr>
+                <th>파일명</th>
+                <th>유형</th>
+                <th>크기</th>
+                <th>수정 시각</th>
+                <th>동작</th>
+              </tr>
+            </thead>
+            <tbody id="file-rows"></tbody>
+          </table>
+        </div>
+        <p id="list-status" class="status"></p>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
